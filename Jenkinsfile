@@ -31,7 +31,16 @@ pipeline {
                 }
             }
             steps {
-                echo "Deploying the application..."
+                script {
+                    // The image from the docker hub.
+                    def dockerCmd = 'docker run -p 3080:3080 -d arshashiri/demo-app:node-app-1.0'
+                    sshagent(['ec2-server-key']) {
+                        // Connect to the ec2 server and run the docker container.
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.71.176.75 ${dockerCmd}"
+                    }
+
+                    echo "Deploying the application..."
+                }
             }
         }
     }
