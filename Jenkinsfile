@@ -38,7 +38,7 @@ pipeline {
             steps{
             sshagent(['QA_ENV_SSH_CRED']){
                 // some block
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@3.80.141.116 sudo docker run -d -p 8080:8080 --name vik  vikash911/myimage:${Image_Version}"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@54.227.177.149 sudo docker run -d -p 8080:8080 --name vikas  vikash911/myimage:${Image_Version}"
             }
         }
         
